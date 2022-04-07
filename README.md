@@ -85,6 +85,27 @@ then your configuration in `/lib/udev/rules.d/40-usb_modeswitch.rules` should be
    ATTR{idVendor}=="0bda", ATTR{idProduct}=="c811", RUN+="/usr/sbin/usb_modeswitch -K -v 0bda -p c811"
    ```   
 
+## Driver update
+
+Remove the driver:
+```
+sudo ./dkms-remove.sh
+```
+
+Make sure you have the latest version of the repository on disk:
+```	
+git pull
+```
+
+Remove any stale binaries:
+```	
+make clean
+```
+
+Reinstall:
+```
+sudo ./dkms-install.sh
+```
 
 ## Build and install without DKMS
 Use following commands:
